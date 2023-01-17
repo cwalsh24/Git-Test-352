@@ -12,10 +12,10 @@ namespace CW2_Getting_into_Git
         //private int steve;
         private int number; 
 
-        public void setRandom()
+        public void setRandom(int lower, int upper)
         {
             //Random r = new Random();
-            number = r.Next(0, 100);
+            number = r.Next(lower, upper);
         }
         public int getRandom(int n)
         {
@@ -24,13 +24,27 @@ namespace CW2_Getting_into_Git
 
         static void Main(string[] args)
         {
+            //variables for the user defined bounds of the guessing game
+            string upper;
+            string lower;
+            int upperInt;
+            int lowerInt;
+
+            Console.WriteLine("Please enter the lower bound for the guessing game");
+            lower = Console.ReadLine();
+            Console.WriteLine("Please enter the upper bound for the guessing game");
+            upper = Console.ReadLine();
+
+            upperInt = Convert.ToInt32(upper);
+            lowerInt = Convert.ToInt32(lower);
+
             string guess;
             int guessInt;
             int tries = 0;
-            Console.WriteLine("hello world ");
+
             Program p = new Program();
-            p.setRandom(); 
-            Console.WriteLine("I am thinking of a number between 1 and 100");
+            p.setRandom(lowerInt, upperInt); 
+            Console.WriteLine("I am thinking of a number between " + lower + " and " + upper);
 
             Console.WriteLine("Enter your guess: ");
             guess = Console.ReadLine();
