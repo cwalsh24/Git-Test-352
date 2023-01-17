@@ -8,26 +8,57 @@ namespace CW2_Getting_into_Git
 {
     class Program
     {
-        private int steve;
-        
-        public void setSteve(int s)
-        {
-            steve = s; 
-        }
+        private Random r = new Random();
+        //private int steve;
+        private int number; 
 
-        public int getSteve()
+        public void setRandom()
         {
-            return steve; 
+            //Random r = new Random();
+            number = r.Next(0, 100);
+        }
+        public int getRandom(int n)
+        {
+            return number; 
         }
 
         static void Main(string[] args)
         {
-            Console.WriteLine("hello world " + 5);
-            //Console.ReadKey();
-            Console.WriteLine("setting steve to 4");
-            Program p = new Program(); 
-            p.setSteve(4);
-            Console.WriteLine("Steve is: " + p.getSteve());
+            string guess;
+            int guessInt;
+            int tries = 0;
+            Console.WriteLine("hello world ");
+            Program p = new Program();
+            p.setRandom(); 
+            Console.WriteLine("I am thinking of a number between 1 and 100");
+
+            Console.WriteLine("Enter your guess: ");
+            guess = Console.ReadLine();
+            guessInt = Convert.ToInt32(guess);
+            tries = tries + 1;
+
+            while (p.number != guessInt)
+            {
+
+                if(guessInt < p.number)
+                {
+                    Console.WriteLine("Too low");
+                }
+
+                if (guessInt > p.number)
+                {
+                    Console.WriteLine("Too high");
+                }
+
+                tries = tries + 1;
+                Console.WriteLine("Enter your guess: ");
+                guess = Console.ReadLine();
+                guessInt = Convert.ToInt32(guess);
+
+            }
+
+            Console.WriteLine("Correct");
+            Console.WriteLine("It took " + tries + " tries to guess the correct number.");
             Console.ReadKey();
         }
     }
